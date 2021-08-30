@@ -1,0 +1,29 @@
+﻿  compilation header save succeeded; see D:\Personal Work\SnakeGame_cpp\Engine\FramebufferPS.shh
+  compilation header save succeeded; see D:\Personal Work\SnakeGame_cpp\Engine\FramebufferVS.shh
+  Board.cpp
+  DXErr.cpp
+  Food.cpp
+  FrameTimer.cpp
+  Game.cpp
+  Graphics.cpp
+  Keyboard.cpp
+  Main.cpp
+  MainWindow.cpp
+  Mouse.cpp
+  Snake.cpp
+d:\personal work\snakegame_cpp\engine\board.cpp(19): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+d:\personal work\snakegame_cpp\engine\board.cpp(58): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\personal work\snakegame_cpp\engine\board.cpp(61): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+d:\personal work\snakegame_cpp\engine\board.cpp(74): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\personal work\snakegame_cpp\engine\board.cpp(77): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\personal work\snakegame_cpp\engine\board.cpp(78): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\personal work\snakegame_cpp\engine\board.cpp(80): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+d:\personal work\snakegame_cpp\engine\board.cpp(97): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\personal work\snakegame_cpp\engine\board.cpp(99): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+d:\personal work\snakegame_cpp\engine\board.cpp(117): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\personal work\snakegame_cpp\engine\board.cpp(119): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\personal work\snakegame_cpp\engine\board.cpp(120): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\personal work\snakegame_cpp\engine\board.cpp(122): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+d:\personal work\snakegame_cpp\engine\game.cpp(31): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+d:\personal work\snakegame_cpp\engine\game.cpp(49): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Engine.vcxproj -> D:\Personal Work\SnakeGame_cpp\x64\Debug\Engine.exe
