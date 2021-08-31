@@ -12,7 +12,10 @@ public:
 	Ball(Vec2 pos, Vec2 v);
 	void Draw(Graphics& gfx) const;
 	void Update(float dt);
-	void isCollidedToWalls(const RectF& walls);
+	bool isCollidedToWalls(const RectF& walls);
 	RectF GetBoundariesofBall()const;
+	void ReboundX();
+	void ReboundY();
+
 
 };
