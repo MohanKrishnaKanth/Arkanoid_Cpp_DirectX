@@ -3,6 +3,7 @@
 #include <wrl.h>
 #include "CustomException.h"
 #include "Colors.h"
+#include "RectF.h"
 
 class Graphics
 {
@@ -38,7 +39,10 @@ public:
 	void PutPixel( int x,int y,Color c );
 	void DrawRectWithDim(int x, int y, int width, int height, Color c);
 	void DrawRectWithPoints(int x0, int y0, int x1, int y1, Color c);
-
+	void DrawRectByRectF(const RectF& r, Color c)
+	{
+		DrawRectWithPoints(int(r.left), int(r.top), int(r.right), int(r.bottom), c);
+	}
 
 	~Graphics();
 private:
