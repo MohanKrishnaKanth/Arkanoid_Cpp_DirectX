@@ -46,4 +46,9 @@ RectF Brick::BrickRect() const
 	return brickRect;
 }
 
+void Brick::ResetBrick()
+{
+	isDestroyed = false;
+}
+
 

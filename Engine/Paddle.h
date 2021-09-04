@@ -20,4 +20,5 @@ public:
 	void isWallCollided(const RectF& walls);
 	void Update(Keyboard& kb,float dt);
 	void ResetCooldown();
+	Vec2 GetPosition() const;
 };

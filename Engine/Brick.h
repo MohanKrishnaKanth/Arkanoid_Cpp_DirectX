@@ -19,6 +19,6 @@ public:
 	void ExecuteCollision(Ball& ball);
 	RectF GetPaddedRect(float offset) const;
 	RectF BrickRect() const;
-
+	void ResetBrick();
 
 };

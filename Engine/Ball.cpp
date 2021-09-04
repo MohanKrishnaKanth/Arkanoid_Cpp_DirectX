@@ -45,8 +45,8 @@ bool Ball::isCollidedToWalls(const RectF & walls)
 	else if (ballBox.bottom > walls.bottom)
 	{
 		//clamping the excess bottom of ball entered into bottom wall which is ballbox.bottom - screenheight
-		position.y -= ballBox.bottom - walls.bottom;
-		ReboundY();
+		//position.y -= ballBox.bottom - walls.bottom;
+		//ReboundY();
 		isCollided = true;
 	}
 
@@ -76,4 +76,15 @@ Vec2 Ball::GetPosition() const
 Vec2 Ball::GetVelocity() const
 {
 	return vel;
+}
+
+void Ball::SetVelocity(const Vec2& value)
+{
+	vel = value;
+}
+
+void Ball::ResetPos(const Vec2& pos)
+{
+	position = pos;
+	vel = { 0.0f,0.0f };
 }

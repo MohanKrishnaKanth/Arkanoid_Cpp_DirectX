@@ -22,19 +22,29 @@ private:
 	void UpdateModel(float dt);
 	/********************************/
 	/*  User Functions              */
+
+	void DrawBorders();
+
 	/********************************/
 private:
 	MainWindow& wnd;
 	Graphics gfx;
 	/********************************/
 	/*  User Variables              */
-	static constexpr int bricksAcross = 20;
+	static constexpr int bricksAcross = 18;
 	static constexpr int bricksDown = 4;
 	static constexpr int brickWidth = 40;
 	static constexpr int brickHeight = 24;
 	static constexpr int totalBricks = bricksAcross * bricksDown;
+	static constexpr int borderWidth = 4;
 
+	const Vec2 topLeft{ 40.0f,40.0f };
+	const float Right = topLeft.x + float(bricksAcross * brickWidth);
 
+	bool Gameover = false;
+	int lives = 5;
+	bool resetBallPosToPad;
+	bool isStarted = false;
 	FrameTimer ft;
 	Ball ball;
 	Paddle paddle;

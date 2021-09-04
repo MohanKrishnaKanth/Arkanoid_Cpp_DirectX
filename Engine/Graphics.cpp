@@ -313,6 +313,16 @@ void Graphics::DrawRectWithDim(int in_x, int in_y, int width, int height, Color 
 
 void Graphics::DrawRectWithPoints(int in_x0, int in_y0, int in_x1, int in_y1, Color c)
 {
+	if (in_x1 < in_x0)
+	{
+		std::swap(in_x0, in_x1);
+	}
+
+	if (in_y1 < in_y0)
+	{
+		std::swap(in_y0, in_y1);
+	}
+
 	for (int y = in_y0 ; y < in_y1; ++y)
 	{
 		for (int x = in_x0; x < in_x1; ++x)

@@ -18,5 +18,7 @@ public:
 	void ReboundY();
 	Vec2 GetPosition() const;
 	Vec2 GetVelocity() const;
+	void SetVelocity(const Vec2& value);
+	void ResetPos(const Vec2& pos);
 
 };
