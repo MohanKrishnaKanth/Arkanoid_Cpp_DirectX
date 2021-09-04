@@ -8,6 +8,7 @@
 #include "Ball.h"
 #include "Brick.h"
 #include "Sound.h"
+#include "Paddle.h"
 
 class Game
 {
@@ -27,9 +28,17 @@ private:
 	Graphics gfx;
 	/********************************/
 	/*  User Variables              */
+	static constexpr int bricksAcross = 20;
+	static constexpr int bricksDown = 4;
+	static constexpr int brickWidth = 40;
+	static constexpr int brickHeight = 24;
+	static constexpr int totalBricks = bricksAcross * bricksDown;
+
+
 	FrameTimer ft;
 	Ball ball;
-	Brick bricks;
+	Paddle paddle;
+	Brick bricks[totalBricks];
 	RectF walls;
 	Sound sfxPad = Sound(L"Sounds\\arkpad.wav");
 	Sound sfxBrick = Sound(L"Sounds\\arkbrick.wav");

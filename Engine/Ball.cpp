@@ -1,6 +1,6 @@
 #include "Ball.h"
 
-Ball::Ball(Vec2 pos, Vec2 v)
+Ball::Ball(const Vec2 pos, Vec2 v)
 	:position(pos),
 	 vel(v)
 {
@@ -66,4 +66,14 @@ void Ball::ReboundX()
 void Ball::ReboundY()
 {
 	vel.y *= -1;
+}
+
+Vec2 Ball::GetPosition() const
+{
+	return position;
+}
+
+Vec2 Ball::GetVelocity() const
+{
+	return vel;
 }

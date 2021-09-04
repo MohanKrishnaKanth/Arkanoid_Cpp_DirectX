@@ -9,13 +9,16 @@ private:
 	RectF brickRect;
 	Color c;
 	bool isDestroyed = false;
-	static constexpr float halfWidth = 20.0f;
-	static constexpr float halfHeight = 10.0f;
+	static constexpr float padding = 1.0f;
 
 public:
 	Brick() = default;
 	Brick(const RectF& rect_in, Color c_in);
 	void Draw(Graphics& gfx)const;
-	bool isBallCollided(Ball& ball);
+	bool CheckBallCollision(Ball& ball);
+	void ExecuteCollision(Ball& ball);
+	RectF GetPaddedRect(float offset) const;
+	RectF BrickRect() const;
+
 
 };
