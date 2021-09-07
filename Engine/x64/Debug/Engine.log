@@ -1,2 +1,5 @@
-﻿  Game.cpp
+﻿  Brick.cpp
+  Game.cpp
+  Main.cpp
+  MainWindow.cpp
   Engine.vcxproj -> D:\Personal Work\Arkanoid Game\x64\Debug\Engine.exe

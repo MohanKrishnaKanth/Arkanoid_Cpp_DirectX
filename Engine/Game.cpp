@@ -82,6 +82,19 @@ void Game::UpdateModel(float dt)
 			bricks[brickIndex].ExecuteCollision(ball);
 			sfxBrick.Play();
 			paddle.ResetCooldown();
+
+			bool done = true;
+			for (Brick& b : bricks)
+			{
+				if (!b.CheckDestroyed())
+				{
+					done = false;
+					break;
+				}
+			}
+
+			if (done)
+				gamestate = GameState::Won;
 		}
 
 		const int collided = ball.isCollidedToWalls(walls);
@@ -147,6 +160,15 @@ void Game::UpdateModel(float dt)
 			break;
 
 
+		case GameState::Won:
+			for (Brick& b : bricks)
+			{
+				b.ResetBrick();
+			}
+
+			lives = 5;
+			gamestate = GameState::Reset;
+			break;
 		default:
 			break;
 		}
@@ -188,6 +210,12 @@ void Game::ComposeFrame()
 	else if (gamestate == GameState::Title)
 	{
 		SpriteCode::DrawTitle({ 300.0f,210.0f }, gfx);
+
+	}		
+	else if (gamestate == GameState::Won)
+	{
+		SpriteCode::DrawWon({ 280.0f,210.0f }, gfx);
+
 	}
 
 	

@@ -20,5 +20,5 @@ public:
 	RectF GetPaddedRect(float offset) const;
 	RectF BrickRect() const;
 	void ResetBrick();
-
+	bool CheckDestroyed() const;
 };

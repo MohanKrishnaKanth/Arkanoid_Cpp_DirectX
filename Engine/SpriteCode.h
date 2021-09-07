@@ -9,5 +9,6 @@ public:
 	static void DrawReady(const Vec2 & center, Graphics & gfx);
 	static void DrawLife(const Vec2 & center, Graphics & gfx);
 	static void DrawTitle(const Vec2 & center, Graphics & gfx);
+	static void DrawWon(const Vec2 & center, Graphics & gfx);
 
 };

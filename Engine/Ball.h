@@ -14,7 +14,7 @@ public:
 	Ball(const Vec2 pos, Vec2 v);
 	void Draw(Graphics& gfx) const;
 	void Update(float dt);
-	int& isCollidedToWalls(const RectF& walls);
+	int isCollidedToWalls(const RectF& walls);
 	RectF GetBoundariesofBall()const;
 	void ReboundX();
 	void ReboundY();

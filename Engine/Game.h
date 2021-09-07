@@ -19,7 +19,7 @@ public:
 	Game( const Game& ) = delete;
 	Game& operator=( const Game& ) = delete;
 	void Go();
-	enum GameState { Title ,IsStarted, IsReady,Reset, Gameover };
+	enum GameState { Title ,IsStarted, IsReady,Reset, Gameover, Won };
 private:
 	void ComposeFrame();
 	void UpdateModel(float dt);

@@ -17,7 +17,7 @@ void Ball::Update(float dt)
 	position += vel * dt;
 }
 
-int& Ball::isCollidedToWalls(const RectF & walls)
+int Ball::isCollidedToWalls(const RectF & walls)
 {
 	RectF ballBox = GetBoundariesofBall();
 	int isCollided = 0;

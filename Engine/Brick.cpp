@@ -52,4 +52,10 @@ void Brick::ResetBrick()
 	isDestroyed = false;
 }
 
+bool Brick::CheckDestroyed() const
+{
+	return isDestroyed;
+;
+}
+
 
