@@ -1,11 +1,2 @@
 ﻿  Game.cpp
-  Main.cpp
-  MainWindow.cpp
-d:\personal work\arkanoid game\engine\game.cpp(162): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-d:\personal work\arkanoid game\engine\game.cpp(162): warning C4244: 'argument': conversion from 'const float' to 'int', possible loss of data
-d:\personal work\arkanoid game\engine\game.cpp(163): warning C4244: 'argument': conversion from 'const float' to 'int', possible loss of data
-d:\personal work\arkanoid game\engine\game.cpp(163): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-d:\personal work\arkanoid game\engine\game.cpp(164): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-d:\personal work\arkanoid game\engine\game.cpp(164): warning C4244: 'argument': conversion from 'const float' to 'int', possible loss of data
-d:\personal work\arkanoid game\engine\game.cpp(165): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   Engine.vcxproj -> D:\Personal Work\Arkanoid Game\x64\Debug\Engine.exe

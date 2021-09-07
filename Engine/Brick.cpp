@@ -21,11 +21,12 @@ bool Brick::CheckBallCollision(Ball & ball)
 void Brick::ExecuteCollision(Ball& ball)
 {
 	const Vec2 ballpos = ball.GetPosition();
-	if (std::signbit(ball.GetVelocity().x) == std::signbit((ballpos - brickRect.GetCenter()).x)) //  checking hitting brick at corner from inside way
+	if (std::signbit(ball.GetVelocity().x) == std::signbit((ballpos - brickRect.GetCenter()).x)) //  checking hitting brick at corner from inside way when ball position.x is outside the brick left or right
 	{
 		ball.ReboundY();
 	}
-	else if(ballpos.x >= brickRect.left || ballpos.x <= brickRect.right)
+
+	else if ((ballpos.x >= brickRect.left || ballpos.x <= brickRect.right))
 	{
 		ball.ReboundY();
 	}

@@ -7,12 +7,19 @@ class Paddle
 {
 private:
 	Vec2 position;
-	float halfWidth = 150.0f;
-	float halfHeight = 50.0f;
+	float halfWidth;
+	float halfHeight;
 	static constexpr float speed = 600.0f;
+	static constexpr float MaxXdirExitRatio = 2.0f;
+	static constexpr float fixedZoneWidthRatio = 0.15f;
+
 	bool isCooldown = false;
+	float fixedZoneHalfWidth;
+	float maxXdirExitFactor;
+	float XdirExitFactor;
 
 public:
+
 	Paddle(const Vec2& pos, float halfwidth, float halfheight);
 	RectF GetBoundariesOfPaddle();
 	void Draw(Graphics& gfx);
@@ -21,4 +28,5 @@ public:
 	void Update(Keyboard& kb,float dt);
 	void ResetCooldown();
 	Vec2 GetPosition() const;
+	void ResetPosition(const Vec2& p);
 };

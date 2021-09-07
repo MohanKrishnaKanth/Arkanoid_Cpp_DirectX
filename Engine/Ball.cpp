@@ -1,9 +1,10 @@
 #include "Ball.h"
 
 Ball::Ball(const Vec2 pos, Vec2 v)
-	:position(pos),
-	 vel(v)
+	:position(pos)
+	
 {
+	SetDirection(v);
 }
 
 void Ball::Draw(Graphics & gfx) const
@@ -16,23 +17,23 @@ void Ball::Update(float dt)
 	position += vel * dt;
 }
 
-bool Ball::isCollidedToWalls(const RectF & walls)
+int& Ball::isCollidedToWalls(const RectF & walls)
 {
 	RectF ballBox = GetBoundariesofBall();
-	bool isCollided = false;
+	int isCollided = 0;
 	if (ballBox.left < walls.left)
 	{
 		//clamping the excess left of ball entered into left wall which is negative ballbox.left value
 		position.x += walls.left - ballBox.left;
 		ReboundX();
-		isCollided = true;
+		isCollided = 1;
 	}
 	else if (ballBox.right > walls.right)
 	{
 		//clamping the excess right of ball entered into right wall which is ballbox.right - screenwidth
 		position.x -= ballBox.right - walls.right;
 		ReboundX();
-		isCollided = true;
+		isCollided = 1;
 	}
 
 	if (ballBox.top < walls.top)
@@ -40,14 +41,14 @@ bool Ball::isCollidedToWalls(const RectF & walls)
 		//clamping the excess top of ball entered into top wall which is negative ballbox.top value
 		position.y += walls.top - ballBox.top;
 		ReboundY();
-		isCollided = true;
+		isCollided = 1;
 	}
 	else if (ballBox.bottom > walls.bottom)
 	{
 		//clamping the excess bottom of ball entered into bottom wall which is ballbox.bottom - screenheight
-		//position.y -= ballBox.bottom - walls.bottom;
+		position.y -= ballBox.bottom - walls.bottom;
 		//ReboundY();
-		isCollided = true;
+		isCollided = 2;
 	}
 
 	return isCollided;
@@ -78,13 +79,9 @@ Vec2 Ball::GetVelocity() const
 	return vel;
 }
 
-void Ball::SetVelocity(const Vec2& value)
+void Ball::SetDirection(const Vec2& dir)
 {
-	vel = value;
+	vel = dir.GetNormalized() * speed;
 }
 
-void Ball::ResetPos(const Vec2& pos)
-{
-	position = pos;
-	vel = { 0.0f,0.0f };
-}
+

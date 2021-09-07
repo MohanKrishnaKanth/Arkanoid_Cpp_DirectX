@@ -44,6 +44,8 @@ public:
 		DrawRectWithPoints(int(r.left), int(r.top), int(r.right), int(r.bottom), c);
 	}
 
+	static RectF GetRect();
+
 	~Graphics();
 private:
 	Microsoft::WRL::ComPtr<IDXGISwapChain>				pSwapChain;

@@ -221,6 +221,8 @@ Graphics::Graphics( HWNDKey& key )
 		_aligned_malloc( sizeof( Color ) * Graphics::ScreenWidth * Graphics::ScreenHeight,16u ) );
 }
 
+
+
 Graphics::~Graphics()
 {
 	// free sysbuffer memory (aligned free)
@@ -335,7 +337,10 @@ void Graphics::DrawRectWithPoints(int in_x0, int in_y0, int in_x1, int in_y1, Co
 }
 
 
-
+RectF Graphics::GetRect()
+{
+	return RectF(0.0f, float(ScreenWidth),0.0f, float(ScreenHeight));
+}
 
 //////////////////////////////////////////////////
 //           Graphics Exception

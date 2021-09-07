@@ -8,17 +8,19 @@ private:
 	Vec2 position;
 	Vec2 vel;
 	static constexpr float radius = 7.0f;
+	static constexpr float speed = 600.0f;
 public:
+	Ball() = default;
 	Ball(const Vec2 pos, Vec2 v);
 	void Draw(Graphics& gfx) const;
 	void Update(float dt);
-	bool isCollidedToWalls(const RectF& walls);
+	int& isCollidedToWalls(const RectF& walls);
 	RectF GetBoundariesofBall()const;
 	void ReboundX();
 	void ReboundY();
 	Vec2 GetPosition() const;
 	Vec2 GetVelocity() const;
-	void SetVelocity(const Vec2& value);
-	void ResetPos(const Vec2& pos);
+	void SetDirection(const Vec2& value);
+
 
 };

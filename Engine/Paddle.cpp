@@ -4,7 +4,11 @@ Paddle::Paddle(const Vec2 & pos, float half_width, float half_height)
 	:position(pos),
 	halfWidth(half_width),
 	halfHeight(half_height)
+	
 {
+	XdirExitFactor = MaxXdirExitRatio / halfWidth;
+	fixedZoneHalfWidth = halfWidth * fixedZoneWidthRatio;
+	maxXdirExitFactor = fixedZoneHalfWidth * XdirExitFactor;
 }
 
 RectF Paddle::GetBoundariesOfPaddle()
@@ -26,13 +30,23 @@ bool Paddle::isBallCollided(Ball & ball)
 
 		if (paddleBox.IsOverlapping(ball.GetBoundariesofBall()))
 		{
-			if (std::signbit(ball.GetVelocity().x) == std::signbit((ballpos - position).x))
+			if (std::signbit(ball.GetVelocity().x) == std::signbit((ballpos - position).x) //checking the paddle corner hit when ball position.x is outside paddle left or right
+				|| (ballpos.x >= paddleBox.left || ballpos.x <= paddleBox.right)) 
 			{
-				ball.ReboundY();
-			}
-			else if (ballpos.x >= paddleBox.left || ballpos.x <= paddleBox.right)
-			{
-				ball.ReboundY();
+				Vec2 dir;
+				const float vx = ballpos.x - position.x;
+				if (std::abs(vx) < fixedZoneHalfWidth)
+				{
+					if (vx < 0.0f)
+						dir = Vec2(-maxXdirExitFactor,-1.0f);
+					else
+						dir = Vec2( maxXdirExitFactor,-1.0f );
+				}
+				else
+				{
+					dir = Vec2( vx * XdirExitFactor, -1.0f );
+				}
+				ball.SetDirection(dir);
 			}
 			else
 			{
@@ -82,4 +96,9 @@ void Paddle::ResetCooldown()
 Vec2 Paddle::GetPosition() const
 {
 	return position;
+}
+
+void Paddle::ResetPosition(const Vec2 & p)
+{
+	position = p;
 }
