@@ -1,7 +1,2 @@
-﻿  Ball.cpp
-  Brick.cpp
-  Game.cpp
-  Main.cpp
-  MainWindow.cpp
-  Paddle.cpp
+﻿  Game.cpp
   Engine.vcxproj -> D:\Personal Work\Arkanoid Game\x64\Debug\Engine.exe

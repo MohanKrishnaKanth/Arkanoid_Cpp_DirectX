@@ -29,6 +29,7 @@ private:
 	void DrawBorders();
 	void ResetGame();
 	void DrawLifes();
+	void UpdateBall_Paddle_Brick(float dt);
 	/********************************/
 private:
 	MainWindow& wnd;
