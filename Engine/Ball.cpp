@@ -17,23 +17,23 @@ void Ball::Update(float dt)
 	position += vel * dt;
 }
 
-int Ball::isCollidedToWalls(const RectF & walls)
+Ball::CollisionState Ball::isCollidedToWalls(const RectF & walls)
 {
 	RectF ballBox = GetBoundariesofBall();
-	int isCollided = 0;
+	CollisionState curState = CollisionState::None;
 	if (ballBox.left < walls.left)
 	{
 		//clamping the excess left of ball entered into left wall which is negative ballbox.left value
 		position.x += walls.left - ballBox.left;
 		ReboundX();
-		isCollided = 1;
+		curState = CollisionState::SideWalls;
 	}
 	else if (ballBox.right > walls.right)
 	{
 		//clamping the excess right of ball entered into right wall which is ballbox.right - screenwidth
 		position.x -= ballBox.right - walls.right;
 		ReboundX();
-		isCollided = 1;
+		curState = CollisionState::SideWalls;
 	}
 
 	if (ballBox.top < walls.top)
@@ -41,17 +41,17 @@ int Ball::isCollidedToWalls(const RectF & walls)
 		//clamping the excess top of ball entered into top wall which is negative ballbox.top value
 		position.y += walls.top - ballBox.top;
 		ReboundY();
-		isCollided = 1;
+		curState = CollisionState::SideWalls;
 	}
 	else if (ballBox.bottom > walls.bottom)
 	{
 		//clamping the excess bottom of ball entered into bottom wall which is ballbox.bottom - screenheight
 		position.y -= ballBox.bottom - walls.bottom;
 		//ReboundY();
-		isCollided = 2;
+		curState = CollisionState::BottomWall;
 	}
 
-	return isCollided;
+	return curState;
 }
 
 RectF Ball::GetBoundariesofBall() const

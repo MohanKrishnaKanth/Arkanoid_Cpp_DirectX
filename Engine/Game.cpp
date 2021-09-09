@@ -97,49 +97,39 @@ void Game::UpdateModel(float dt)
 				gamestate = GameState::Won;
 		}
 
-		const int collided = ball.isCollidedToWalls(walls);
-		if (collided == 1||collided == 2)
+		switch (ball.isCollidedToWalls(walls))
 		{
-
-			if (collided == 2)
+		case Ball::BottomWall:
+		{
+			if (lives > 0)
 			{
-				if (lives > 0)
-				{
-					gamestate = GameState::Reset;
-				}
-				else
-				{
-					gamestate = GameState::Gameover;
-				}
-				sfxPad.Play();
+				gamestate = GameState::Reset;
 			}
-
-			else if(collided == 1)
+			else
 			{
-				if (!paddle.isBallCollided(ball)) // checking the ball between wall and paddle for continuous collision
-				{
-					paddle.ResetCooldown();
-				}
-				sfxPad.Play();
+				gamestate = GameState::Gameover;
 			}
+			sfxPad.Play();
 		}
+		break;
+
+		case Ball::SideWalls:
+		{
+			if (!paddle.isBallCollided(ball)) // checking the ball between wall and paddle for continuous collision
+			{
+				paddle.ResetCooldown();
+			}
+			sfxPad.Play();
+		}
+		break;
+		default:
+			break;
+		}
+		
 		
 
 	}
-
-	if (gamestate == GameState::Reset)
-	{
-		ResetGame();
-	}
-	if (gamestate==GameState::IsReady)
-	{
-		if((curWaitTime += dt) > waitTime)
-		{
-			gamestate = GameState::IsStarted;
-			--lives;
-			curWaitTime = 0.0f;
-		}
-	}
+	
 	if (wnd.kbd.KeyIsPressed(VK_RETURN))
 	{
 		switch (gamestate)
@@ -177,7 +167,19 @@ void Game::UpdateModel(float dt)
 
 	}
 
-	
+	if (gamestate == GameState::Reset)
+	{
+		ResetGame();
+	}
+	if (gamestate == GameState::IsReady)
+	{
+		if ((curWaitTime += dt) > waitTime)
+		{
+			gamestate = GameState::IsStarted;
+			--lives;
+			curWaitTime = 0.0f;
+		}
+	}
 }
 
 
@@ -185,6 +187,24 @@ void Game::UpdateModel(float dt)
 void Game::ComposeFrame()
 {
 	DrawBorders();
+
+	switch (gamestate)
+	{
+	case GameState::Gameover:
+		SpriteCode::DrawGameover({ 390.0f,250.0f }, gfx);
+		break;
+	case GameState::Title:
+		SpriteCode::DrawTitle({ 300.0f,210.0f }, gfx);
+		break;
+
+	case GameState::Won:
+		SpriteCode::DrawWon({ 280.0f,210.0f }, gfx);
+		break;
+
+	default:
+		break;
+	}
+
 
 	if (gamestate==GameState::IsStarted || gamestate == GameState::IsReady)
 	{
@@ -202,21 +222,7 @@ void Game::ComposeFrame()
 		DrawLifes();
 	}
 
-	else if(gamestate == GameState::Gameover)
-	{
-		SpriteCode::DrawGameover({ 390.0f,250.0f },gfx);
-	}
 
-	else if (gamestate == GameState::Title)
-	{
-		SpriteCode::DrawTitle({ 300.0f,210.0f }, gfx);
-
-	}		
-	else if (gamestate == GameState::Won)
-	{
-		SpriteCode::DrawWon({ 280.0f,210.0f }, gfx);
-
-	}
 
 	
 }

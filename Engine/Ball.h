@@ -4,6 +4,14 @@
 #include "SpriteCode.h"
 class Ball
 {
+public :
+	enum CollisionState
+	{
+		None,
+		SideWalls,
+		BottomWall
+	};
+
 private:
 	Vec2 position;
 	Vec2 vel;
@@ -14,7 +22,7 @@ public:
 	Ball(const Vec2 pos, Vec2 v);
 	void Draw(Graphics& gfx) const;
 	void Update(float dt);
-	int isCollidedToWalls(const RectF& walls);
+	CollisionState isCollidedToWalls(const RectF& walls);
 	RectF GetBoundariesofBall()const;
 	void ReboundX();
 	void ReboundY();
